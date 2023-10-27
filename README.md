@@ -14,6 +14,8 @@ This project requires **Java JDK 21** to run. I namely use [GraalVM for JDK 21](
 ## Usage
 Checkout the project and start tailoring it for your needs.
 
+**Note:** Build is pre-configured to include all declared dependencies into standalone `.jar`. Therefore, it may be quite big. If you don't need such behaviour, you'll have to change the configuration of `maven-assembly-plugin` in `pom.xml`.
+
 Recommended steps:
 + update `groupId` and `artifactId` in `pom.xml`
 + change default package name from `cz.aloisseckar.starter`

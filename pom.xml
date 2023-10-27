@@ -38,29 +38,29 @@
     
     <build>
         <plugins>
-            <!-- adding MANIFEST.MF to .jar -->
+            <!-- for building jar including all dependencies -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.3.0</version>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
                     <archive>
                         <manifest>
-                            <!-- change path to actual Main class -->
                             <mainClass>cz.aloisseckar.starter.Main</mainClass>
                         </manifest>
                     </archive>
-                </configuration>
-            </plugin>
-            <!-- responsible for performing .jar build -->
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
-                <configuration>
-                    <release>21</release>
-                    <compilerArgs>
-                        <!-- if some special configuration is required -->
-                    </compilerArgs>
+                    <appendAssemblyId>false</appendAssemblyId>
                 </configuration>
             </plugin>
             <!-- for unit testing -->
